@@ -1,0 +1,149 @@
+/**
+ * Styles for link highlighting
+ * PHASE V2: Visual feedback for selected links
+ * ENHANCED: Auto-highlight with numbered badges
+ */
+
+/* Single highlight (when clicking eye button) */
+.smart-link-inspector-highlight {
+  outline: 3px solid #2196f3 !important;
+  outline-offset: 2px !important;
+  background-color: rgba(33, 150, 243, 0.1) !important;
+  transition: all 0.3s ease !important;
+  border-radius: 2px !important;
+}
+
+/* Auto-highlight (all URLs when scanning) */
+.smart-link-inspector-auto-highlight {
+  outline: 2px solid var(--highlight-color, #2196f3) !important;
+  outline-offset: 1px !important;
+  background-color: rgba(33, 150, 243, 0.05) !important;
+  transition: all 0.3s ease !important;
+  border-radius: 2px !important;
+  padding-right: 24px !important;
+}
+
+/* Numbered badge */
+.smart-link-inspector-badge {
+  position: absolute !important;
+  top: -8px !important;
+  right: -8px !important;
+  background-color: #2196f3 !important;
+  color: white !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  font-family: Arial, sans-serif !important;
+  padding: 2px 6px !important;
+  border-radius: 10px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  z-index: 999999 !important;
+  pointer-events: none !important;
+  line-height: 1 !important;
+}
+
+/* Hover effect for auto-highlighted links */
+.smart-link-inspector-auto-highlight:hover {
+  background-color: rgba(33, 150, 243, 0.15) !important;
+  outline-width: 3px !important;
+}
+
+/* Plain-text URL highlighting */
+.smart-link-inspector-plain-text {
+  background-color: #ffd700 !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  position: relative !important;
+  display: inline-block !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.smart-link-inspector-plain-text:hover {
+  background-color: #ffed4e !important;
+}
+
+/* Hover actions container */
+.smart-link-inspector-hover-actions {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  margin-top: 4px !important;
+  background: white !important;
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  padding: 4px !important;
+  display: flex !important;
+  gap: 4px !important;
+  z-index: 999999 !important;
+  white-space: nowrap !important;
+}
+
+.smart-link-inspector-hover-actions .action-btn {
+  background: #f5f5f5 !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+  font-family: Arial, sans-serif !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  color: #333 !important;
+  font-weight: 500 !important;
+}
+
+.smart-link-inspector-hover-actions .action-btn:hover {
+  background: #2196f3 !important;
+  color: white !important;
+  border-color: #2196f3 !important;
+  transform: translateY(-1px) !important;
+}
+
+.smart-link-inspector-hover-actions .action-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* Toast notification on page */
+.smart-link-inspector-toast {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  background: #323232 !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+  z-index: 999999 !important;
+  pointer-events: none !important;
+}
+
+/* Toast animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
