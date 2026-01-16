@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Link Inspector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-top">
+      <h1 class="title">🔍 Smart Link Inspector</h1>
+      <button id="darkModeToggle" class="icon-btn" title="Toggle Dark Mode">
+        <span class="icon">🌙</span>
+      </button>
+    </div>
+    
+    <!-- Stats Bar (PHASE V3) -->
+    <div id="statsBar" class="stats-bar hidden">
+      <div class="stat-item">
+        <span class="stat-label">Total:</span>
+        <span id="statTotal" class="stat-value">0</span>
+      </div>
+      <div class="stat-item stat-low">
+        <span class="stat-label">Low:</span>
+        <span id="statLow" class="stat-value">0</span>
+      </div>
+      <div class="stat-item stat-medium">
+        <span class="stat-label">Medium:</span>
+        <span id="statMedium" class="stat-value">0</span>
+      </div>
+      <div class="stat-item stat-high">
+        <span class="stat-label">High:</span>
+        <span id="statHigh" class="stat-value">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controls Section -->
+  <div class="controls">
+    <!-- Search Box (PHASE V2) -->
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search URLs or domains..."
+        class="search-input"
+      />
+      <button id="clearSearch" class="clear-btn hidden">✕</button>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button id="scanBtn" class="btn btn-primary">
+        <span class="btn-icon">🔄</span>
+        <span class="btn-text">Scan Page</span>
+      </button>
+      
+      <button id="externalOnlyToggle" class="btn btn-secondary">
+        🌍 External Only
+      </button>
+      
+      <!-- Export Dropdown (PHASE V3) -->
+      <div class="dropdown">
+        <button id="exportBtn" class="btn btn-secondary">
+          <span class="btn-icon">📥</span>
+          <span class="btn-text">Export</span>
+        </button>
+        <div id="exportMenu" class="dropdown-menu hidden">
+          <button class="dropdown-item" data-format="csv">Export as CSV</button>
+          <button class="dropdown-item" data-format="json">Export as JSON</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- View Toggle (PHASE V2) -->
+    <div class="view-toggle">
+      <button id="listViewBtn" class="view-btn active" data-view="list">
+        <span>📋 List</span>
+      </button>
+      <button id="groupViewBtn" class="view-btn" data-view="group">
+        <span>📁 By Domain</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <p>Scanning page for URLs...</p>
+  </div>
+
+  <!-- Empty State -->
+  <div id="emptyState" class="empty-state hidden">
+    <div class="empty-icon">🔗</div>
+    <h3>No URLs Found</h3>
+    <p>Click "Scan Page" to detect URLs on the current webpage</p>
+  </div>
+
+  <!-- URL List Container -->
+  <div id="urlContainer" class="url-container hidden">
+    <!-- List View (PHASE V1 & V2) -->
+    <div id="listView" class="list-view">
+      <!-- URLs will be dynamically inserted here -->
+    </div>
+    
+    <!-- Group View (PHASE V2) -->
+    <div id="groupView" class="group-view hidden">
+      <!-- Grouped URLs will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <div id="urlCount" class="url-count">0 URLs detected</div>
+      <button id="autoHighlightToggle" class="auto-highlight-btn hidden" title="Toggle auto-highlight on page">
+        <span class="btn-icon">🎨</span>
+        <span class="btn-text">Highlight All</span>
+      </button>
+      <button id="plainTextToggle" class="auto-highlight-btn hidden" title="Highlight plain-text URLs">
+        <span class="btn-icon">✨</span>
+        <span class="btn-text">Highlight Text URLs</span>
+      </button>
+    </div>
+    <div class="live-indicator">
+      <span id="liveStatus" class="live-dot"></span>
+      <span class="live-text">Live Detection</span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden">
+    <span id="toastMessage"></span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
